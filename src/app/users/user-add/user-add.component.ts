@@ -16,36 +16,22 @@ export class UserAddComponent implements OnInit {
     company: 'Teclea tu nombre de usuario',
     email: 'Teclea tu email',
     address: 'Dirección',
-    phone: 'teléfono'
+    phone: 'teléfono',
+    gender: 'M|H'
   };
 
   public userData = {
+    id:+this.uniqueId(),
+    _id:this.uniqueId(),
     name:'',
     company:'',
     email:'',
     address:'',
     phone:'',
-    gender: 'M',
+    gender: '',
   };
 
-  public genders = {
-    H: {
-      label: 'Hombre',
-      id: 'gender_H',
-      value: 'H',
-      name: 'genderOption',
-      checked: false
-    },
-    M: {
-      label: 'Mujer',
-      id: 'gender_M',
-      value: 'M',
-      name: 'genderOption',
-      checked: true
-    }
-  };
-
-  constructor(private api: ApiService, private router: Router) { }
+    constructor(private api: ApiService, private router: Router) { }
 
   private uniqueId() {
     const thisMS: number = Date.now();
@@ -54,21 +40,24 @@ export class UserAddComponent implements OnInit {
     unique = unique.toString().replace('.', thisMS.toString());
     return unique;
   }
+
   addUser(){
-    this.user._id = this.uniqueId();
+/*     this.user._id = this.uniqueId();
     this.user.id = 15;
     this.user.name =  this.userData.name;
     this.user.email = this.userData.email;
     this.user.address = this.userData.address;
     this.user.company = this.userData.company;
     this.user.phone = this.userData.phone;
-    this.user.gender = this.userData.gender;
+    this.user.gender = this.userData.gender; */
+
+    this.user = Object.assign({}, this.userData);
 
 
     this.api.addUser$(this.user).subscribe(response => {
       let id = response['id'];
       this.router.navigate(['/users',id]);
-    })
+    }, err=> console.log(err))
   }
   ngOnInit() {
   }

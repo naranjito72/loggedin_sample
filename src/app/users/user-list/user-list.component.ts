@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class UserListComponent implements OnInit {
 
   public users: any;
-
+  public data: any;
   constructor(private api: ApiService) { }
 
   getUsers(){
@@ -17,6 +17,14 @@ export class UserListComponent implements OnInit {
       console.log(response);
       this.users = response });
     ;
+  }
+
+  deleteUser(id:string){
+    this.api.deleteUser$(+id).subscribe(data => {
+      this.data = data;
+      this.getUsers();
+    })
+
   }
   ngOnInit() {
     this.getUsers();
