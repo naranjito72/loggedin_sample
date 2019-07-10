@@ -5,13 +5,15 @@ import { UserComponent } from './user/user.component';
 import { RouterModule } from '@angular/router';
 import { UserAddComponent } from './user-add/user-add.component';
 import { FormsModule} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [UserListComponent, UserComponent, UserAddComponent],
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ],
   exports: [UserListComponent, UserComponent, UserAddComponent]
 })
