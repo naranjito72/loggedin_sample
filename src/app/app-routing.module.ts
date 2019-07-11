@@ -6,6 +6,8 @@ import { UserComponent } from './users/user/user.component';
 import { NotfoundComponent } from './commons/notfound/notfound.component';
 import { UserAddComponent } from './users/user-add/user-add.component';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './login/register/register.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -13,6 +15,9 @@ const routes: Routes = [
   {path: 'users', component: UserListComponent, canActivate: [AuthGuard]},
   {path: 'users/:id', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'newUser', component: UserAddComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+
   {path: '**', component: NotfoundComponent}
 ];
 

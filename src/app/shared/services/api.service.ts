@@ -21,10 +21,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getMembers$() {
+  getUsers$() {
     return this.http.get('http://localhost:3000/members/');
   }
-  getMemberr$(id: string) {
+  getUser$(id: string) {
     return this.http.get<User>(`http://localhost:3000/members/${id}`);
   }
 

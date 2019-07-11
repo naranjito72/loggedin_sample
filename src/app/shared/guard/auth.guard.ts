@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 canActivate() {
 /*TODO  codigo check in usuario */
-  this.router.navigate(['users/login']);
+  this.router.navigate(['/login']);
   return false;
 }
 }
