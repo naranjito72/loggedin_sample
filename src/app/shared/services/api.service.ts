@@ -21,28 +21,28 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers$() {
-    return this.http.get('http://localhost:3000/users/');
+  getMembers$() {
+    return this.http.get('http://localhost:3000/members/');
   }
-  getUser$(id: string) {
-    return this.http.get<User>(`http://localhost:3000/users/${id}`);
+  getMemberr$(id: string) {
+    return this.http.get<User>(`http://localhost:3000/members/${id}`);
   }
 
-  addUser$(user:User) {
-    return this.http.post<User>('http://localhost:3000/users/', user)
-      .pipe(tap((user: User) => console.log(`added Member: id=${user.id}`)),
+  addUser$(user: User) {
+    return this.http.post<User>('http://localhost:3000/members/', user)
+      .pipe(tap(( user: User) => console.log(`added Member: id=${user.id}`)),
             catchError(error => {
               console.log(error);
               return throwError(error);
             }));
   }
 
-  deleteUser$(id: number){
-      return this.http.delete(`http://localhost:3000/users/${id}`);
+  deleteUser$(id: number) {
+      return this.http.delete(`http://localhost:3000/members/${id}`);
   }
 
-  editUser$(user: User){
-    return this.http.put<User>('http://localhost:3000/users/', user)
+  editUser$(user: User) {
+    return this.http.put<User>('http://localhost:3000/members/', user)
     .pipe(tap((user: User) => console.log(`added Member: id=${user.id}`)),
           catchError(error => {
             console.log(error);
