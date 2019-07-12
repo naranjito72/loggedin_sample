@@ -1,7 +1,17 @@
-<label for="">Email</label>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+<label  >Email</label>
 <!-- <input type="text" placeholder="email" [formControl]="loginForm.get('email')"> -->
 <!-- manera de recoger el objeto mail -->
 <input type="text" placeholder="email" [formControl]="email">
 <label for="">Password</label>
 
 <input type="text" placeholder="password" [formControl]="password">
+<button type="submit">Enviar</button>
+
+<mat-error *ngIf = "(email.invalid || password.invalid) && (email.dirty || email.touched)"></mat-error>
+
+Los campos no pueden estar vacios
+</mat-card>
+</form>
+{{loginForm | json}}

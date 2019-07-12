@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { RegisterComponent } from './login/register/register.component';
+import { FormBuilder } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,10 @@ import { RegisterComponent } from './login/register/register.component';
     AppRoutingModule,
     CommonsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+
   ],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent],
   exports: [RegisterComponent]
 })
